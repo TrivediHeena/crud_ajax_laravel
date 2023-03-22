@@ -1,0 +1,23 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('git checkout') {
+            steps {
+                script{
+                    git 'https://github.com/TrivediHeena/crud_ajax_laravel.git'
+                    
+                }
+            }
+        }
+        stage('Build'){
+            steps{
+                bat '''
+                    composer install
+                    cp .env.example .env
+                    php artisan key:generate
+                '''
+            }
+        }
+    }
+}
