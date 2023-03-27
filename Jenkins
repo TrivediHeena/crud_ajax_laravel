@@ -18,14 +18,15 @@ pipeline {
                     chmod -744 .env
                     php artisan key:generate                    
                     php artisan config:cache
+                    php artisan test --without-tty
                 '''
             }
         }
-        stage('Test'){
+        /*stage('Test'){
             steps{
                 bat './vendor/bin/phpunit'
                 //bat 'php artisan test --without-tty'
             }
-        }
+        }*/
     }
 }
