@@ -22,7 +22,7 @@ pipeline {
         stage('Test'){
             steps{
                 //bat './vendor/bin/phpunit'
-                bat 'php artisan test'
+                bat 'php artisan test --without-tty'
             }
         }
     }
