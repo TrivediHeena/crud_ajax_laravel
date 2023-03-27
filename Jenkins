@@ -14,9 +14,8 @@ pipeline {
             steps{
                 bat '''
                     composer install
-                    cp .env.example .env
                     php artisan key:generate
-                    php artisan config:clear
+                    cp .env.example .env                    
                 '''
             }
         }
