@@ -15,7 +15,9 @@ pipeline {
                 bat '''
                     composer install
                     cp -a .env.example .env
+                    chmod -744 .env
                     php artisan key:generate                    
+                    php artisan config:cache
                 '''
             }
         }
