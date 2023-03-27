@@ -10,7 +10,7 @@ pipeline {
                 }
             }
         }
-        stage('Build'){
+        stage('Build & Test'){
             steps{
                 bat '''
                     composer install
