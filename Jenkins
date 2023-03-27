@@ -14,15 +14,15 @@ pipeline {
             steps{
                 bat '''
                     composer install
-                    php artisan key:generate
-                    cp .env.example .env                    
+                    cp -a .env.example .env
+                    php artisan key:generate                    
                 '''
             }
         }
         stage('Test'){
             steps{
-                //bat './vendor/bin/phpunit'
-                bat 'php artisan test --without-tty'
+                bat './vendor/bin/phpunit'
+                //bat 'php artisan test --without-tty'
             }
         }
     }
