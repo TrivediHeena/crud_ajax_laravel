@@ -29,4 +29,12 @@ pipeline {
             }
         }*/
     }
+    post{
+        always{
+            echo 'Successfully completed...'
+        }
+        failure{
+            mail subject:'Laravel_Project_%env.JOB_NAME%',body:'<b>Laravel_Project_%env.JOB_NAME% has some problem<br/>on the build number %env.BUILD_NUMBER% on this URL. %env.BUILD_URL%', to:'mybook319@gmail.com'
+        }
+    }
 }
