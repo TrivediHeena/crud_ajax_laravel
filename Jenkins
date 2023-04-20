@@ -22,12 +22,14 @@ pipeline {
                 '''
             }
         }
-        /*stage('Test'){
+        stage('Build Docker Image'){
             steps{
-                bat './vendor/bin/phpunit'
-                //bat 'php artisan test --without-tty'
+                script{
+                    bat 'docker build . --file Dockerfile --tag htri1207/crudajax:%BUILD_ID%'
+                    bat 'docker build . --file Dockerfile --tag htri1207/crudajax:latest'
+                }
             }
-        }*/
+        }
     }
     post{
         always{
